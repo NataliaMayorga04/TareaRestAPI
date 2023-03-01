@@ -13,7 +13,7 @@ import javax.swing.text.html.parser.Entity;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/account")
+@RequestMapping(value = "/client")
 public class ControllerClient {
     private final ServiceClient serviceClient;
 
