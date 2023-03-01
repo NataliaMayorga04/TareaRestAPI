@@ -1,4 +1,4 @@
-package com.controller;
+/*package com.controller;
 
 import com.services.MockAccountGenerateService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,4 +19,4 @@ public class MockAccountController {
         dummyAccountGenerateService.generateAccounts();
     }
 
-}
+}*/
