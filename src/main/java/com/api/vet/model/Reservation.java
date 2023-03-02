@@ -24,9 +24,4 @@ public class Reservation {
     @Column(nullable = false)
     private Client client;
 
-
-
-
-
-
 }
