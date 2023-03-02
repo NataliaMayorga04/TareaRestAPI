@@ -12,9 +12,9 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public Reservation makeReservation(Long clientId, Reservation reservation) {
+    public Reservation makeReservation(Long idClient, Reservation reservation) {
         Client client = new Client();
-        client.setId(clientId);
+        client.setId(idClient);
         reservation.setClient(client);
         return reservationRepository.save(reservation);
     }

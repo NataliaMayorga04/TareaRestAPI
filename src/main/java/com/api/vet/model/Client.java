@@ -25,9 +25,8 @@ public class Client {
     @Column(nullable = false)
     private String petName;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
-
     }
 
 

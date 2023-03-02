@@ -10,24 +10,26 @@ import java.util.Date;
 
 
 @Entity
-@Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "reservation")
 public class Reservation {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private Client client;
-
-    @Column(nullable = false)
-    private LocalDate reservationDate;
+    private Long idReserva;
 
     @Column(nullable = false)
     private String petName;
 
-    private String notes;
+    @Column(nullable = false)
+    private Date reservationDate;
+
+    @Column
+    private String note;
+
+    @ManyToOne
+    private Client client;
 }
