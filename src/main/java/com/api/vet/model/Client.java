@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -23,6 +24,9 @@ public class Client {
     private String name;
     @Column(nullable = false)
     private String petName;
+
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations;
 
     }
 

@@ -5,5 +5,5 @@ import com.api.vet.model.Reservation;
 public interface ServiceReservation {
     Reservation saveReservation(Reservation reservation);
 
-    Reservation getReservation(Reservation Client.);
+    Reservation getReservation(Reservation Client);
 }
