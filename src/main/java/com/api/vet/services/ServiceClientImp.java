@@ -1,7 +1,7 @@
-package com.services;
+package com.api.vet.services;
 
-import com.model.Client;
-import com.repository.ClientRepository;
+import com.api.vet.model.Client;
+import com.api.vet.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class ServiceClientImp implements ServiceClient {
         return repositoryClient.save(clientSerched);
     }
     @Override
-    public boolean deleteUser(Long id) {
+    public boolean deleteClient(Long id) {
 
         try{
             repositoryClient.deleteById(id);

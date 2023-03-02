@@ -1,5 +1,5 @@
-package com.services;
-import com.model.Client;
+package com.api.vet.services;
+import com.api.vet.model.Client;
 
 import java.util.Optional;
 
@@ -10,5 +10,5 @@ public interface ServiceClient {
 
     Client clientModify(Long id, Client clientModify);
 
-    boolean deleteUser(Long id);
+    boolean deleteClient(Long id);
 }

@@ -1,6 +1,6 @@
-package com.repository;
+package com.api.vet.repository;
 
-import com.model.Client;
+import com.api.vet.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

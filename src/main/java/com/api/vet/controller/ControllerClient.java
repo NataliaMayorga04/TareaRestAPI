@@ -1,15 +1,11 @@
-package com.controller;
+package com.api.vet.controller;
 
-import com.model.Client;
-import com.services.ServiceClient;
+import com.api.vet.model.Client;
+import com.api.vet.services.ServiceClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-
-import javax.swing.text.html.parser.Entity;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,7 +13,7 @@ import javax.swing.text.html.parser.Entity;
 public class ControllerClient {
     private final ServiceClient serviceClient;
 
-    @PostMapping
+    @PostMapping(value = "/postClient")
     public ResponseEntity saveClient(@RequestBody Client client) {
         return new ResponseEntity(serviceClient.saveClient(client), HttpStatus.CREATED);
     }
@@ -34,7 +30,7 @@ public class ControllerClient {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteClient(@PathVariable("id") Long idClient, @RequestBody Client client) {
-        boolean response = serviceClient.deleteUser(idClient);
+        boolean response = serviceClient.deleteClient(idClient);
         if (response == true) {
             return new ResponseEntity(HttpStatus.OK);
         }
@@ -43,3 +39,5 @@ public class ControllerClient {
         }
     }
 }
+
+
