@@ -1,7 +1,7 @@
-package com.services;
+package com.api.vet.services;
 
-import com.repository.ClientRepository;
-import com.model.Client;
+import com.api.vet.repository.ClientRepository;
+import com.api.vet.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class ClientQueryService {
     private ClientRepository clientRepository;
 
     public Optional<Client> getClientById(Long Id) {
-        return  clientRepository.findById(Id);
+        return clientRepository.findById(Id);
     }
 
     public List<Client> getClients() {
