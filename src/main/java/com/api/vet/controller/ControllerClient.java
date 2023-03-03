@@ -3,6 +3,7 @@ import com.api.vet.controller.DTO.ReservationDTO;
 import com.api.vet.model.Client;
 import com.api.vet.model.Reservation;
 import com.api.vet.services.ServiceClient;
+import com.api.vet.services.ServicePostLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/client")
 public class ControllerClient {
 
+    private final ServicePostLimiter postLimiter = new ServicePostLimiter();
     private final ServiceClient serviceClient;
 
     @PostMapping(value = "/postClient")
@@ -43,6 +45,10 @@ public class ControllerClient {
     @PostMapping(value = "/{id}/reservation")
     public ResponseEntity saveReservation(@PathVariable("id") Long idClient, @RequestBody ReservationDTO reservationDTO)
     {
+        if (!ServicePostLimiter.increment()) {
+            return new ResponseEntity("You have reached the maximum number of posts.", HttpStatus.BAD_REQUEST);
+        }
+
         Reservation reservation = new Reservation(reservationDTO.getIdReserva(),reservationDTO.getPetName(),
                 reservationDTO.getReservationDate(), reservationDTO.getNote(),reservationDTO.getClientID());
         return new ResponseEntity(serviceClient.saveReservation(reservation), HttpStatus.CREATED);
