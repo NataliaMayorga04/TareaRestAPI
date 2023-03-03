@@ -15,7 +15,6 @@ public class ReservationService {
     public Reservation makeReservation(Long idClient, Reservation reservation) {
         Client client = new Client();
         client.setId(idClient);
-        reservation.setClient(client);
         return reservationRepository.save(reservation);
     }
 }

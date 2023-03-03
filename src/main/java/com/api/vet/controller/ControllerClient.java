@@ -1,5 +1,5 @@
 package com.api.vet.controller;
-
+import com.api.vet.controller.DTO.ReservationDTO;
 import com.api.vet.model.Client;
 import com.api.vet.model.Reservation;
 import com.api.vet.services.ServiceClient;
@@ -8,12 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/client")
 public class ControllerClient {
+
     private final ServiceClient serviceClient;
 
     @PostMapping(value = "/postClient")
@@ -41,16 +40,23 @@ public class ControllerClient {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
     @PostMapping(value = "/{id}/reservation")
-    public ResponseEntity saveReservation(@PathVariable("id") Long idClient, @RequestBody Reservation reservation) {
-        return new ResponseEntity(serviceClient.saveReservation(idClient, reservation), HttpStatus.CREATED);
+    public ResponseEntity saveReservation(@PathVariable("id") Long idClient, @RequestBody ReservationDTO reservationDTO)
+    {
+        Reservation reservation = new Reservation(reservationDTO.getIdReserva(),reservationDTO.getPetName(),
+                reservationDTO.getReservationDate(), reservationDTO.getNote(),reservationDTO.getClientID());
+        return new ResponseEntity(serviceClient.saveReservation(reservation), HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/{idClient}/reservations")
-    public ResponseEntity getAllReservations(@PathVariable("clientId") Long clientId) {
-        return new ResponseEntity(serviceClient.getAllReservations(clientId), HttpStatus.OK);
+
+    @GetMapping(value = "/{clientID}/reservations")
+    public ResponseEntity getAllReservations(@PathVariable("clientID") Long clientID) {
+        return new ResponseEntity(serviceClient.getAllReservations(clientID), HttpStatus.OK);
     }
 }
 
-
+  /*  @GetMapping(value = "/{clientID}/reservations")
+    public ResponseEntity getAllReservations(@PathVariable("clientID") Long clientId) {
+        return new ResponseEntity(serviceClient.getAllReservations(clientId), HttpStatus.OK);
+    }
+}*/

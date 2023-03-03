@@ -2,7 +2,6 @@ package com.api.vet.services;
 import com.api.vet.model.Client;
 import com.api.vet.model.Reservation;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface ServiceClient {
@@ -14,6 +13,7 @@ public interface ServiceClient {
 
     boolean deleteClient(Long id);
 
-    Reservation saveReservation(Long idClient, Reservation reservation);
-    List<Reservation> getAllReservations(Long idClient);
+    Reservation saveReservation(Reservation reservation);
+    Optional<Reservation> getAllReservations(Long clientID);
 }
+    /*Optional<Reservation> getAllReservations(Long idClient); */

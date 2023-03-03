@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,23 +43,14 @@ public class ServiceClientImp implements ServiceClient {
     }
 
     @Override
-    public Reservation saveReservation(Long idClient, Reservation reservation) {
-        Optional<Client> optionalClient = repositoryClient.findById(idClient);
-        if (optionalClient.isPresent()) {
-            Client client = optionalClient.get();
-            reservation.setClient(client);
-            return  repositoryReservation.save(reservation);
-        }
-        throw new RuntimeException("Client not found with id " + idClient);
+    public Reservation saveReservation(Reservation reservation) {
+        return repositoryReservation.save(reservation);
     }
 
     @Override
-    public List<Reservation> getAllReservations(Long idClient) {
-        Optional<Client> optionalClient = repositoryClient.findById(idClient);
-        if (optionalClient.isPresent()) {
-            Client client = optionalClient.get();
-            return client.getReservations();
-        }
-        throw new RuntimeException("Client not found with id " + idClient);
+    public Optional<Reservation> getAllReservations(Long clientID) {
+        return repositoryReservation.findById(clientID);
     }
+
+
 }

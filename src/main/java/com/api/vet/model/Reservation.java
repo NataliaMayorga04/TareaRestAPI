@@ -17,7 +17,7 @@ import java.util.Date;
 public class Reservation {
 
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
 
@@ -29,7 +29,7 @@ public class Reservation {
 
     @Column
     private String note;
-
-    @ManyToOne
-    private Client client;
+    @Id
+    @Column
+    private Long clientID;
 }
