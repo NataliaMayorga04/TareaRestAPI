@@ -46,7 +46,7 @@ public class ControllerClient {
     public ResponseEntity saveReservation(@PathVariable("id") Long idClient, @RequestBody ReservationDTO reservationDTO)
     {
         if (!ServicePostLimiter.increment()) {
-            return new ResponseEntity("You have reached the maximum number of posts.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Ha alcanzado el numero maximo de reservas", HttpStatus.BAD_REQUEST);
         }
 
         Reservation reservation = new Reservation(reservationDTO.getIdReserva(),reservationDTO.getPetName(),
