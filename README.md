@@ -4,6 +4,9 @@
 ## Requerimientos
 Para el funcionamiento del código se debe implementar JAVA 11 en adelante. 
 
+## Link de ingreso a swagger
+http://localhost:8080/swagger-ui/#/
+
 ## Postman
 
 ### saveCLient: Se encarga de enviar un json de un cliente y crearlo
@@ -13,8 +16,6 @@ Para el funcionamiento del código se debe implementar JAVA 11 en adelante.
 ###  obtainClient: Recupera el cliente por medio de su id
 
 ![imagen](https://user-images.githubusercontent.com/78616272/222838343-420088e9-bff0-4728-b439-4cfcc219fbf2.png)
-
-###  obtainClient: Recupera el cliente por medio de su id
 
 ### saveReservation: se encarga de enviar un json con la informacion de la reserva
 
