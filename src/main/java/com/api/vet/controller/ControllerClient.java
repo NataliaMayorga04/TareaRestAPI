@@ -68,9 +68,6 @@ public class ControllerClient {
     @GetMapping(value = "/dayreservation/{day}/{month}/{year}")
     public ResponseEntity getReservationByDate(@PathVariable("day") int day, @PathVariable("month") int month, @PathVariable("year") int year) {
         Date date = new Date(year - 1900, month - 1, day);
-        System.out.println(date);
-        Date date1 = new Date();
-        System.out.println(date1);
         return new ResponseEntity(serviceClient.getReservationByDate(date), HttpStatus.OK);
     }
 
