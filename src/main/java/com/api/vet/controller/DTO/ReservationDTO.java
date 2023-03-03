@@ -3,6 +3,7 @@ package com.api.vet.controller.DTO;
 import lombok.Data;
 
 import javax.persistence.Column;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data

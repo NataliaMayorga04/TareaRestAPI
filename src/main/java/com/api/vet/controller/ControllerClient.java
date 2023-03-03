@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/client")
@@ -51,7 +53,10 @@ public class ControllerClient {
 
         Reservation reservation = new Reservation(reservationDTO.getIdReserva(),reservationDTO.getPetName(),
                 reservationDTO.getReservationDate(), reservationDTO.getNote(),reservationDTO.getClientID());
+            System.out.println(reservationDTO.getReservationDate());
         return new ResponseEntity(serviceClient.saveReservation(reservation), HttpStatus.CREATED);
+
+
     }
 
 
@@ -59,6 +64,17 @@ public class ControllerClient {
     public ResponseEntity getAllReservations(@PathVariable("clientID") Long clientID) {
         return new ResponseEntity(serviceClient.getAllReservations(clientID), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/dayreservation/{day}/{month}/{year}")
+    public ResponseEntity getReservationByDate(@PathVariable("day") int day, @PathVariable("month") int month, @PathVariable("year") int year) {
+        Date date = new Date(year - 1900, month - 1, day);
+        System.out.println(date);
+        Date date1 = new Date();
+        System.out.println(date1);
+        return new ResponseEntity(serviceClient.getReservationByDate(date), HttpStatus.OK);
+    }
+
+
 }
 
   /*  @GetMapping(value = "/{clientID}/reservations")

@@ -18,6 +18,7 @@ public class Reservation {
 
 
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
 
@@ -29,7 +30,7 @@ public class Reservation {
 
     @Column
     private String note;
-    @Id
+
     @Column
     private Long clientID;
 }

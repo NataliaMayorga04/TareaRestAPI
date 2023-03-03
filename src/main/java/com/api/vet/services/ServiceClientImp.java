@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,9 +50,15 @@ public class ServiceClientImp implements ServiceClient {
     }
 
     @Override
-    public Optional<Reservation> getAllReservations(Long clientID) {
-        return repositoryReservation.findById(clientID);
+    public Optional<List<Reservation>> getAllReservations(Long clientID) {
+        return repositoryReservation.getReservation(clientID);
     }
+
+    @Override
+    public Optional<List<Reservation>> getReservationByDate(Date reservationDate) {
+        return repositoryReservation.getReservation(reservationDate);
+    }
+
 
 
 }
