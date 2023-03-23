@@ -6,24 +6,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name="CLIENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class Client {
     @Id
-
+    @Column(name="DOCUMENT")
     private Long id;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, name="ADDRESS")
     private String address;
-    @Column(nullable = false)
+    @Column(name="NAME", nullable = false)
     private String name;
-    @Column(nullable = false)
-    private String petName;
+
+    @Column(name="DATE_CREATED")
+    private Date dateCreated;
 
 }
 
