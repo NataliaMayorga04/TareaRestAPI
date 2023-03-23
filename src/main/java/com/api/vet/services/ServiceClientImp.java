@@ -30,7 +30,6 @@ public class ServiceClientImp implements ServiceClient {
     public Client clientModify(Long id, Client clientModify) {
         Client clientSerched = repositoryClient.findById(id).get();
         clientSerched.setAddress(clientModify.getAddress());
-        clientSerched.setPetName(clientModify.getPetName());
         return repositoryClient.save(clientSerched);
     }
     @Override

@@ -8,6 +8,7 @@ public class VetApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VetApplication.class, args);
+
 	}
 
 }
