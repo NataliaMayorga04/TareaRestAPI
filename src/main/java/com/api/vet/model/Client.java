@@ -1,5 +1,7 @@
 package com.api.vet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +9,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name="CLIENT")
@@ -26,6 +31,17 @@ public class Client {
 
     @Column(name="DATE_CREATED")
     private Date dateCreated;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "client",
+            orphanRemoval = true,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Pet> pets = new HashSet<>();
+
+    //@OneToMany(targetEntity = Pet.class, cascade = CascadeType.ALL)
+    //@JoinColumn(name = "fk_pet_id", referencedColumnName = "id")
+    //private Set<Pet> pets = new HashSet<>();
 
 }
 
