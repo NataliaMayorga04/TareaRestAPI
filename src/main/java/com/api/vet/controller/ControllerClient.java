@@ -1,8 +1,10 @@
 package com.api.vet.controller;
 import com.api.vet.controller.DTO.ReservationDTO;
 import com.api.vet.model.Client;
+import com.api.vet.model.Pet;
 import com.api.vet.model.Reservation;
 import com.api.vet.services.ServiceClient;
+import com.api.vet.services.ServicePet;
 import com.api.vet.services.ServicePostLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,16 @@ public class ControllerClient {
 
     private final ServicePostLimiter postLimiter = new ServicePostLimiter();
     private final ServiceClient serviceClient;
+    private final ServicePet servicePet;
 
     @PostMapping(value = "/postClient")
     public ResponseEntity saveClient(@RequestBody Client client) {
         return new ResponseEntity(serviceClient.saveClient(client), HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/postPet")
+    public ResponseEntity savePet(@RequestBody Pet pet) {
+        return new ResponseEntity(servicePet.savePet(pet), HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{id}")
@@ -29,6 +37,11 @@ public class ControllerClient {
         return new ResponseEntity(serviceClient.obtainClient(idClient), HttpStatus.OK);
     }
 
+   /* @GetMapping(value = "/{id}")
+    public ResponseEntity obtainPet(@PathVariable("id") Long idPet) {
+        return new ResponseEntity(serviceClient.obtainClient(idPet), HttpStatus.OK);
+    }
+*/
     @PutMapping(value = "/{id}")
     public ResponseEntity modifyClient(@PathVariable("id") Long idClient, @RequestBody Client client) {
         return new ResponseEntity(serviceClient.clientModify(idClient, client), HttpStatus.OK);
@@ -74,8 +87,3 @@ public class ControllerClient {
 
 }
 
-  /*  @GetMapping(value = "/{clientID}/reservations")
-    public ResponseEntity getAllReservations(@PathVariable("clientID") Long clientId) {
-        return new ResponseEntity(serviceClient.getAllReservations(clientId), HttpStatus.OK);
-    }
-}*/
