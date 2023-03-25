@@ -39,9 +39,13 @@ public class Client {
             cascade = CascadeType.ALL)
     private Set<Pet> pets = new HashSet<>();
 
-    //@OneToMany(targetEntity = Pet.class, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "fk_pet_id", referencedColumnName = "id")
-    //private Set<Pet> pets = new HashSet<>();
+
+
+
+
+
+
+
 
 }
 

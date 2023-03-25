@@ -2,6 +2,7 @@ package com.api.vet.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,12 +33,6 @@ public class Pet {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENT")
     private Client client;
-
-
-    //Set<Client> owner = new HashSet<>();
-    //@ManyToOne(fetch=FetchType.LAZY, optional = false)
-    //@JoinColumn(name= "client_id", referencedColumnName = "DOCUMENT")
-    //private Client client;
 
 
 

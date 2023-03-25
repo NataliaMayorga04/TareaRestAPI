@@ -13,10 +13,5 @@ import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query("SELECT reserva FROM Reservation reserva WHERE reserva.clientID = :clientID ")
-    Optional <List<Reservation> >getReservation(@Param("clientID") Long clientID);
-
-    @Query("SELECT reserva FROM Reservation reserva WHERE reserva.reservationDate = :reservationDate ")
-    Optional <List<Reservation> >getReservation(@Param("reservationDate") Date reservationDate);
 
 }

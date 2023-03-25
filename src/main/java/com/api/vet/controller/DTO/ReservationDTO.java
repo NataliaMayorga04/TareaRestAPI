@@ -9,8 +9,6 @@ import java.util.Date;
 @Data
 public class ReservationDTO {
     private Long idReserva;
-    private String petName;
     private Date reservationDate;
-    private String note;
-    private Long clientID;
+
 }

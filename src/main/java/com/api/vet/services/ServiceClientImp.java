@@ -43,21 +43,6 @@ public class ServiceClientImp implements ServiceClient {
         }
     }
 
-    @Override
-    public Reservation saveReservation(Reservation reservation) {
-        return repositoryReservation.save(reservation);
-    }
-
-    @Override
-    public Optional<List<Reservation>> getAllReservations(Long clientID) {
-        return repositoryReservation.getReservation(clientID);
-    }
-
-    @Override
-    public Optional<List<Reservation>> getReservationByDate(Date reservationDate) {
-        return repositoryReservation.getReservation(reservationDate);
-    }
-
 
 
 }

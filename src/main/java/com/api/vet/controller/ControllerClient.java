@@ -6,6 +6,7 @@ import com.api.vet.model.Reservation;
 import com.api.vet.services.ServiceClient;
 import com.api.vet.services.ServicePet;
 import com.api.vet.services.ServicePostLimiter;
+import com.api.vet.services.ServiceReservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,8 @@ public class ControllerClient {
     private final ServiceClient serviceClient;
     private final ServicePet servicePet;
 
+    private final ServiceReservation serviceReservation;
+
     @PostMapping(value = "/postClient")
     public ResponseEntity saveClient(@RequestBody Client client) {
         return new ResponseEntity(serviceClient.saveClient(client), HttpStatus.CREATED);
@@ -30,6 +33,11 @@ public class ControllerClient {
     @PostMapping(value = "/postPet")
     public ResponseEntity savePet(@RequestBody Pet pet) {
         return new ResponseEntity(servicePet.savePet(pet), HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/postReservation")
+    public ResponseEntity saveReservation(@RequestBody Reservation reservation) {
+        return new ResponseEntity(serviceReservation.saveReservation(reservation), HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/{id}")
@@ -52,36 +60,10 @@ public class ControllerClient {
         boolean response = serviceClient.deleteClient(idClient);
         if (response == true) {
             return new ResponseEntity(HttpStatus.OK);
-        }
-        else{
+        } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-    }
-    @PostMapping(value = "/{id}/reservation")
-    public ResponseEntity saveReservation(@PathVariable("id") Long idClient, @RequestBody ReservationDTO reservationDTO)
-    {
-        if (!ServicePostLimiter.increment()) {
-            return new ResponseEntity("Ha alcanzado el numero maximo de reservas", HttpStatus.BAD_REQUEST);
-        }
 
-        Reservation reservation = new Reservation(reservationDTO.getIdReserva(),reservationDTO.getPetName(),
-                reservationDTO.getReservationDate(), reservationDTO.getNote(),reservationDTO.getClientID());
-            System.out.println(reservationDTO.getReservationDate());
-        return new ResponseEntity(serviceClient.saveReservation(reservation), HttpStatus.CREATED);
-
-
-    }
-
-
-    @GetMapping(value = "/{clientID}/reservations")
-    public ResponseEntity getAllReservations(@PathVariable("clientID") Long clientID) {
-        return new ResponseEntity(serviceClient.getAllReservations(clientID), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/dayreservation/{day}/{month}/{year}")
-    public ResponseEntity getReservationByDate(@PathVariable("day") int day, @PathVariable("month") int month, @PathVariable("year") int year) {
-        Date date = new Date(year - 1900, month - 1, day);
-        return new ResponseEntity(serviceClient.getReservationByDate(date), HttpStatus.OK);
     }
 
 
