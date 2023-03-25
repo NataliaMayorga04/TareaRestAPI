@@ -1,25 +1,23 @@
 package com.api.vet.controller;
-import com.api.vet.controller.DTO.ReservationDTO;
 import com.api.vet.model.Client;
 import com.api.vet.model.Pet;
 import com.api.vet.model.Reservation;
 import com.api.vet.services.ServiceClient;
 import com.api.vet.services.ServicePet;
-import com.api.vet.services.ServicePostLimiter;
 import com.api.vet.services.ServiceReservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/client")
 public class ControllerClient {
 
-    private final ServicePostLimiter postLimiter = new ServicePostLimiter();
+
     private final ServiceClient serviceClient;
     private final ServicePet servicePet;
 
@@ -45,11 +43,12 @@ public class ControllerClient {
         return new ResponseEntity(serviceClient.obtainClient(idClient), HttpStatus.OK);
     }
 
-   /* @GetMapping(value = "/{id}")
-    public ResponseEntity obtainPet(@PathVariable("id") Long idPet) {
-        return new ResponseEntity(serviceClient.obtainClient(idPet), HttpStatus.OK);
+    @GetMapping(value = "/{clientId}/pets")
+    public ResponseEntity<List<Pet>> getPetsByClientId(@PathVariable("clientId") Long clientId) {
+        List<Pet> pets = servicePet.getPetsByClientId(clientId);
+        return new ResponseEntity<>(pets, HttpStatus.OK);
     }
-*/
+
     @PutMapping(value = "/{id}")
     public ResponseEntity modifyClient(@PathVariable("id") Long idClient, @RequestBody Client client) {
         return new ResponseEntity(serviceClient.clientModify(idClient, client), HttpStatus.OK);

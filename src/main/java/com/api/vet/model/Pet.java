@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="PET")
+@Table(name="PET", uniqueConstraints = @UniqueConstraint(columnNames = {"CLIENT"}))
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

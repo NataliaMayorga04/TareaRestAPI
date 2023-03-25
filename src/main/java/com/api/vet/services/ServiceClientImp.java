@@ -16,7 +16,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ServiceClientImp implements ServiceClient {
 
-    private final ReservationRepository repositoryReservation;
     private  final ClientRepository repositoryClient;
     @Override
     public Client saveClient(Client client) {
