@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "5b813a3a-e21c-4dcd-b9a8-d78c0db5805a",
+		"name": "APIRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25899475"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/client/postClient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1000786543,\r\n    \"address\":\"cra4d\",\r\n    \"name\":\"Juli\",\r\n    \"dateCreated\": \"2023-03-25T00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/client/postClient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"client",
+						"postClient"
+					]
+				},
+				"description": "agrega cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/client/postPet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 48,\r\n    \"name\": \"Tobias\",\r\n    \"dateCreated\": \"2022-03-23T10:30:00Z\",\r\n    \"client\": {\r\n        \"id\": 1000786543\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/client/postPet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"client",
+						"postPet"
+					]
+				},
+				"description": "Agrega mascota"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/client/postReservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reservationDate\": \"2023-05-10T00:00:00Z\",\r\n    \"client\": {\r\n        \"id\": 1000786543\r\n    },\r\n    \"pet\": {\r\n        \"id\": 48\r\n    }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/client/postReservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"client",
+						"postReservation"
+					]
+				},
+				"description": "Agrega Reserva"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/client/1000786543/pets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/client/1000786543/pets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"client",
+						"1000786543",
+						"pets"
+					]
+				},
+				"description": "Trae todos los pet de un client"
+			},
+			"response": []
+		}
+	]
+}

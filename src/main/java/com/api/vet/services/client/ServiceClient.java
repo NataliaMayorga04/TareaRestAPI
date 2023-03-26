@@ -1,10 +1,7 @@
-package com.api.vet.services;
-import com.api.vet.model.Client;
-import com.api.vet.model.Reservation;
+package com.api.vet.services.client;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import com.api.vet.model.Client;
+
 import java.util.Optional;
 
 public interface ServiceClient {

@@ -1,10 +1,11 @@
 package com.api.vet.controller;
+
 import com.api.vet.model.Client;
 import com.api.vet.model.Pet;
 import com.api.vet.model.Reservation;
-import com.api.vet.services.ServiceClient;
-import com.api.vet.services.ServicePet;
-import com.api.vet.services.ServiceReservation;
+import com.api.vet.services.client.ServiceClient;
+import com.api.vet.services.pet.ServicePet;
+import com.api.vet.services.reservation.ServiceReservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +16,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/client")
-public class ControllerClient {
+
+public class ApiController {
 
 
     private final ServiceClient serviceClient;
     private final ServicePet servicePet;
-
     private final ServiceReservation serviceReservation;
 
     @PostMapping(value = "/postClient")
