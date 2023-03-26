@@ -15,5 +15,5 @@ import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-
+    boolean existsByClientAndReservationDate(Client client, Date reservationDate);
 }
