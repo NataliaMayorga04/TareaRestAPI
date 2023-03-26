@@ -22,21 +22,55 @@ http://localhost:8081/swagger-ui/#/
 
 ## Postman
 
-### saveCLient: Se encarga de enviar un json de un cliente y crearlo
+### saveCLient - postClient: Se encarga de enviar un json de un cliente y crearlo
+
+![image](https://user-images.githubusercontent.com/78616272/227788493-692d4542-9329-4d55-94a0-4902c4d399df.png)
+![image](https://user-images.githubusercontent.com/78616272/227788909-ffd93680-f707-4b9e-89d4-1ac94000a160.png)
 
 
 
-###  obtainClient: Recupera el cliente por medio de su id
+###  savePet - postPet : Se encarga de enviar un json de un cliente y crearlo
+![image](https://user-images.githubusercontent.com/78616272/227788531-3f625fb3-20ee-47f7-a956-fbfc47f900f0.png)
+![image](https://user-images.githubusercontent.com/78616272/227788555-cd129a76-0b5b-4194-aa3d-51f4090e871f.png)
+<br>
+<br>
+Si se crea una tercera mascota salda error indicando que no es posible tener mas de dos mascotas para una misma persona
+![image](https://user-images.githubusercontent.com/78616272/227788611-6b44ebb9-10b6-40ac-bbdb-3bbc3eecefb8.png)
+
+![image](https://user-images.githubusercontent.com/78616272/227788998-21f48dc8-01be-497b-b1ef-0f023913fc97.png)
+
+
+
+## getPetsByClientId - id/pets : Recupera todos los clientes de un mismo id
+
+![image](https://user-images.githubusercontent.com/78616272/227788700-8382762d-d3cd-4298-b215-930a8836fb8e.png)
 
 
 ### saveReservation: se encarga de enviar un json con la informacion de la reserva
 
+![image](https://user-images.githubusercontent.com/78616272/227788770-945990f7-33c9-456c-bc9f-1b9e1cf22534.png)
+![image](https://user-images.githubusercontent.com/78616272/227789060-e972d416-cfad-4cd4-b26d-645fb014fbdd.png)
 
 
-## getAllReservations: Recupera la reserva por medio de el id del cliente
+<br>
+<br>
+Si realiza una reserva para la misma fecha con algun perro saldra error
+![image](https://user-images.githubusercontent.com/78616272/227788817-35cd34c2-73c2-494f-a13f-c995957c77f9.png)
+
+<br>
+Si cambiamos la fecha la permite realizar de nuevo
+
+![image](https://user-images.githubusercontent.com/78616272/227789271-4fd6fc13-df15-4235-91e3-0a4b7a8e6442.png)
+
+![image](https://user-images.githubusercontent.com/78616272/227789313-7f789474-fca2-4669-a58b-19f9c3f392e5.png)
 
 
 
- ## getReservationByDate: busca las reservas segun el dia:
+
+
+
+
+
+
 
 
