@@ -35,6 +35,7 @@ http://localhost:8081/swagger-ui/#/
 <br>
 <br>
 Si se crea una tercera mascota salda error indicando que no es posible tener mas de dos mascotas para una misma persona
+
 ![image](https://user-images.githubusercontent.com/78616272/227788611-6b44ebb9-10b6-40ac-bbdb-3bbc3eecefb8.png)
 
 ![image](https://user-images.githubusercontent.com/78616272/227788998-21f48dc8-01be-497b-b1ef-0f023913fc97.png)
@@ -55,6 +56,7 @@ Si se crea una tercera mascota salda error indicando que no es posible tener mas
 <br>
 <br>
 Si realiza una reserva para la misma fecha con algun perro saldra error
+
 ![image](https://user-images.githubusercontent.com/78616272/227788817-35cd34c2-73c2-494f-a13f-c995957c77f9.png)
 
 <br>
