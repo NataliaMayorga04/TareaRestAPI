@@ -1,11 +1,11 @@
 package com.api.vet.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -13,24 +13,23 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "reservation")
+@Table(name = "BOOKING", uniqueConstraints = @UniqueConstraint(columnNames = {"CLIENT_ID", "DATE"}))
 public class Reservation {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long idReserva;
 
-    @Column(nullable = false)
-    private String petName;
-
-    @Column(nullable = false)
+    @Column(nullable = false, name = "DATE")
     private Date reservationDate;
 
-    @Column
-    private String note;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CLIENT_ID")
+    private Client client;
 
-    @Column
-    private Long clientID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PET_ID")
+    private Pet pet;
+
 }
