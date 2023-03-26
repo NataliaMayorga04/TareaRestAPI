@@ -17,7 +17,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "BOOKING")
+@Table(name = "BOOKING", uniqueConstraints = @UniqueConstraint(columnNames = {"CLIENT_ID", "DATE"}))
 public class Reservation {
 
     @Id

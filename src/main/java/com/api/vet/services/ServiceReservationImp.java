@@ -30,7 +30,7 @@ public class ServiceReservationImp implements ServiceReservation{
         Date reservationDate = reservation.getReservationDate();
 
         // Check if a reservation already exists for this client and date
-        if (repositoryReservation.existsByClientAndReservationDate(reservation.getClient(), reservation.getReservationDate())) {
+        if (repositoryReservation.existsByClientAndReservationDate(client, reservationDate)) {
             throw new RuntimeException("A reservation already exists for this client and date.");
         }
 
