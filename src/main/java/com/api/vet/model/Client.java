@@ -19,6 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 
 public class Client {
+
     @Id
     @Column(name = "DOCUMENT")
     private Long id;
@@ -36,6 +37,13 @@ public class Client {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<Pet> pets = new HashSet<>();
+
+    public Client(Long id, String address, String name, Date dateCreated) {
+        this.id = id;
+        this.address = address;
+        this.name = name;
+        this.dateCreated = dateCreated;
+    }
 
 }
 
