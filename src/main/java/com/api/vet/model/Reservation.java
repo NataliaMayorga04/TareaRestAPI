@@ -32,4 +32,10 @@ public class Reservation {
     @JoinColumn(name = "PET_ID")
     private Pet pet;
 
+    public Reservation(Client client, Long idReserva, Date reservationDate, Pet pet) {
+        this.client = client;
+        this.idReserva = idReserva;
+        this.reservationDate = reservationDate;
+        this.pet = pet;
+    }
 }

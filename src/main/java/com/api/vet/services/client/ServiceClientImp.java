@@ -32,14 +32,13 @@ public class ServiceClientImp implements ServiceClient {
 
     @Override
     public boolean deleteClient(Long id) {
-
-        try {
+        if(id != null){
             repositoryClient.deleteById(id);
             return true;
-        } catch (Exception e) {
-            return false;
+        }else{
+            throw new RuntimeException("Id cannot be null");
         }
-    }
 
+    }
 
 }

@@ -26,6 +26,7 @@ public class ServicePetImp implements ServicePet {
 
     @Override
     public List<Pet> getPetsByClientId(Long clientId) {
+
         return repositoryPet.findByClientId(clientId);
     }
 

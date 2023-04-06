@@ -30,5 +30,10 @@ public class Pet {
     @JoinColumn(name = "CLIENT")
     private Client client;
 
-
+    public Pet(Client client, Long id, String name, Date dateCreated) {
+        this.client = client;
+        this.id = id;
+        this.name = name;
+        this.dateCreated = dateCreated;
+    }
 }
