@@ -9,9 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/client")
 
 public class ClientController {
@@ -28,12 +31,30 @@ public class ClientController {
         }
     }
 
-     //
-
     @GetMapping(value = "/{id}")
-    public ResponseEntity obtainClient(@PathVariable("id") Long idClient) {
-        return new ResponseEntity(serviceClient.obtainClient(idClient), HttpStatus.OK);
+    public ResponseEntity<ClientDTO> obtainClient(@PathVariable("id") Long idClient) {
+        Optional<Client> client = serviceClient.obtainClient(idClient);
+        if (client.isPresent()) {
+            ClientDTO responseDTO = convertToClientResponseDTO(client.get());
+            return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
+    // Helper method to convert Client entity to ClientResponseDTO
+    private ClientDTO convertToClientResponseDTO(Client client) {
+        ClientDTO responseDTO = new ClientDTO();
+        responseDTO.setId(client.getId());
+        responseDTO.setAddress(client.getAddress());
+        responseDTO.setName(client.getName());
+        responseDTO.setDateCreated(client.getDateCreated());
+        // Set other necessary fields or relationships
+        return responseDTO;
+    }
+
+    // Helper method to convert Client entity to ClientResponseDTO
+
 
     @PutMapping(value = "/{id}")
     public ResponseEntity modifyClient(@PathVariable("id") Long idClient, @RequestBody Client client) {
