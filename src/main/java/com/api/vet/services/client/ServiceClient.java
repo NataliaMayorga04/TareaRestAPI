@@ -10,8 +10,4 @@ public interface ServiceClient {
 
     Optional<Client> obtainClient(long idClient);
 
-
-    Client clientModify(Long id, Client clientModify);
-
-    boolean deleteClient(Long id);
 }

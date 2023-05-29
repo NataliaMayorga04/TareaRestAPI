@@ -53,23 +53,4 @@ public class ClientController {
         return responseDTO;
     }
 
-    // Helper method to convert Client entity to ClientResponseDTO
-
-
-    @PutMapping(value = "/{id}")
-    public ResponseEntity modifyClient(@PathVariable("id") Long idClient, @RequestBody Client client) {
-        return new ResponseEntity(serviceClient.clientModify(idClient, client), HttpStatus.OK);
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteClient(@PathVariable("id") Long idClient, @RequestBody Client client) {
-        boolean response = serviceClient.deleteClient(idClient);
-        if (response == true) {
-            return new ResponseEntity(HttpStatus.OK);
-        } else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-
-    }
-
 }
