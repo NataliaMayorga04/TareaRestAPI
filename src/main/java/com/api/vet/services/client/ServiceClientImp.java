@@ -23,22 +23,5 @@ public class ServiceClientImp implements ServiceClient {
         return repositoryClient.findById(idClient);
     }
 
-    @Override
-    public Client clientModify(Long id, Client clientModify) {
-        Client clientSerched = repositoryClient.findById(id).get();
-        clientSerched.setAddress(clientModify.getAddress());
-        return repositoryClient.save(clientSerched);
-    }
-
-    @Override
-    public boolean deleteClient(Long id) {
-        if(id != null){
-            repositoryClient.deleteById(id);
-            return true;
-        }else{
-            throw new RuntimeException("Id cannot be null");
-        }
-
-    }
 
 }

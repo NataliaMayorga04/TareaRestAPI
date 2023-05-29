@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -27,6 +28,15 @@ public class ServiceReservationImp implements ServiceReservation {
 
         return repositoryReservation.save(reservation);
 
+    }
+
+    @Override
+    public List<Reservation> getAllReservationsByClientId(Long clientId) {
+        // Implement the logic to retrieve reservations by client ID
+        // using the ReservationRepository or any other necessary dependencies
+
+        // Example implementation:
+        return repositoryReservation.findByClientId(clientId);
     }
 
 
