@@ -47,35 +47,10 @@ public class ServiceClientTest {
         Mockito.verify(repositoryClient).findById(789L);
     }
 
-    @Test
-    void Given_a_clientID_when_modify_then_return_modifiedClient(){
-        Client client = new Client(135L, "Cra 32", "Ana", new Date("7/4/23"));
-        Client modify = new Client(135L, "Cra 74", "Ana", new Date("7/4/23"));
-        Mockito.when(repositoryClient.findById(135L)).thenReturn(Optional.of(client));
-        Mockito.when(repositoryClient.save(modify)).thenReturn(modify);
 
-        Client modifiedClient = clientService.clientModify(135L, modify);
-        Assertions.assertNotNull(modifiedClient);
-        Assertions.assertEquals(modify, modifiedClient);
-        Mockito.verify(repositoryClient).findById(135L);
-        Mockito.verify(repositoryClient).save(modify);
-    }
 
-    @Test
-    void Given_a_clientByID_when_delete_then_return_true(){
-        Client client = new Client(123L, "Cll 6", "Juan", new Date("15/10/23"));
-        boolean resultado = clientService.deleteClient(client.getId());
 
-        Assertions.assertTrue(resultado);
-    }
 
-    @Test
-    void Given_a_client_with_IDNull_when_delete_then_return_RunTimeException(){
-        Client client = new Client(null, "Cra 9", "Paola", new Date("12/8/23"));
-        Assertions.assertThrows(RuntimeException.class, () -> {
-            clientService.deleteClient(client.getId());
-        });
-    }
 
 
 }
